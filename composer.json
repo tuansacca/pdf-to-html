@@ -12,8 +12,8 @@
   ],
   "minimum-stability": "dev",
   "require": {
-    "php": ">=5.4.0",
-    "pelago/emogrifier": "^5.0.0",
+    "php": ">=7.2.0",
+    "pelago/emogrifier": "^v6.0.0",
     "ext-dom": "*",
     "ext-fileinfo": "*"
   },
