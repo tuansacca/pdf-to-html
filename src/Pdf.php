@@ -149,12 +149,17 @@ class Pdf extends Base
 
         $countPages = $this->countPages();
         if ($countPages) {
-            if ($countPages > 1)
-                for ($i = 1; $i <= $countPages; $i++) {
-                    $content = file_get_contents($base_path . '-' . $i . '.html');
-                    $this->html->addPage($i, $content);
+            if (!$this->getOptions('generate')['noFrames']) {
+                if ($this->getOptions('generate')['singlePage']) {
+                    $content = file_get_contents($base_path . '-html.html');
+                    $this->html->addPage(1, $content);
+                } else {
+                    for ($i = 1; $i <= $countPages; $i++) {
+                        $content = file_get_contents($base_path . '-' . $i . '.html');
+                        $this->html->addPage($i, $content);
+                    }
                 }
-            else {
+            } else {
                 $content = file_get_contents($base_path . '.html');
                 $this->html->addPage(1, $content);
             }
